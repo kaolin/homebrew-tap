@@ -2,19 +2,16 @@
 #
 # NOTE: replace `kaolin` below with your actual GitHub username if it differs.
 #
-# This starts as a HEAD-only formula so you can install before cutting a release:
-#     brew install --HEAD kaolin/tap/crew
-#
-# Once you tag a release (see the tap README), uncomment `url` + `sha256` and drop
-# `--HEAD` — `brew install kaolin/tap/crew` will then work for everyone.
+# Stable install:  brew install kaolin/tap/crew
+# Bleeding edge:    brew install --HEAD kaolin/tap/crew
+# New release: bump the tag, url, and sha256 (see the tap README).
 class Crew < Formula
   desc "Status console + dispatcher for hand-run Claude Code sessions"
   homepage "https://github.com/kaolin/crew"
   license "MIT"
+  url "https://github.com/kaolin/crew/archive/refs/tags/v0.1.0.tar.gz"
+  sha256 "e378ad4b27f4c0dad694785aeb7ca85eb73a696eb7861d4a88d5c9c399431e73"
   head "https://github.com/kaolin/crew.git", branch: "main"
-
-  # url "https://github.com/kaolin/crew/archive/refs/tags/v0.1.0.tar.gz"
-  # sha256 "REPLACE_WITH_SHASUM_OF_THE_TARBALL"
 
   def install
     bin.install "crew"
