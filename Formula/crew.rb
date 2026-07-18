@@ -9,8 +9,8 @@ class Crew < Formula
   desc "Status console + dispatcher for hand-run Claude Code sessions"
   homepage "https://github.com/kaolin/crew"
   license "MIT"
-  url "https://github.com/kaolin/crew/archive/refs/tags/v0.1.2.tar.gz"
-  sha256 "ae1bccaaf68f64501c01fafeb75e93b65899b6784408abd0c438db94a0202783"
+  url "https://github.com/kaolin/crew/archive/refs/tags/v0.1.4.tar.gz"
+  sha256 "83f9aa0a1d5eef5803d164799ef641fb28a59a70211898a24178883e53758392"
   head "https://github.com/kaolin/crew.git", branch: "main"
 
   def install
