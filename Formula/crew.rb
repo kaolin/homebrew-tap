@@ -8,13 +8,16 @@
 class Crew < Formula
   desc "Status console + dispatcher for hand-run Claude Code sessions"
   homepage "https://github.com/kaolin/crew"
-  url "https://github.com/kaolin/crew/archive/refs/tags/v0.1.9.tar.gz"
-  sha256 "54ce34a4b1b7d18e08f895c8eae192ba8327978c5c370712397842771aa0c433"
+  url "https://github.com/kaolin/crew/archive/refs/tags/v0.1.10.tar.gz"
+  sha256 "6e79b88b10438524fc670057dfdd6382e030a47caf8d6ee1b6c8192d308487c9"
   license "MIT"
   head "https://github.com/kaolin/crew.git", branch: "main"
 
   def install
     bin.install "crew"
+    bin.install "crew-hub"
+    pkgshare.install "hub-protocol.example.md"
+    doc.install "docs/reach-your-fleet-from-your-phone.md"
   end
 
   # Manages crew's snapshot launchd agent: `brew services start crew`.
@@ -28,5 +31,8 @@ class Crew < Formula
 
   test do
     assert_match "status", shell_output("#{bin}/crew --help")
+    # crew-hub must refuse to start brief-less, and point at the installed example.
+    out = shell_output("HUB_PROTOCOL=#{testpath}/nope #{bin}/crew-hub 2>&1", 1)
+    assert_match "hub-protocol.example.md", out
   end
 end
